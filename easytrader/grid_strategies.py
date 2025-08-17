@@ -95,11 +95,15 @@ class Copy(BaseStrategy):
             Copy._need_captcha_reg = True
 
     def _get_clipboard_data(self) -> str:
-        if Copy._need_captcha_reg:
+        # 增加验证码识别，防止复制时弹出验证码窗口阻塞
+        while True:
+            # if Copy._need_captcha_reg:
             if (
                     self._trader.app.top_window().window(
                         class_name="Static", title_re="验证码").exists(timeout=1)
             ):
+                logger.info("识别到出现了验证码弹窗-->")
+
                 file_path = "tmp.png"
                 count = 5
                 found = False
@@ -147,7 +151,9 @@ class Copy(BaseStrategy):
                 if not found:
                     self._trader.app.top_window().Button2.click()  # 点击取消
             else:
-                Copy._need_captcha_reg = False
+                # Copy._need_captcha_reg = False
+                break
+
         count = 5
         while count > 0:
             try:

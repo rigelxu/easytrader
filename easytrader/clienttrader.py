@@ -174,7 +174,7 @@ class ClientTrader(IClientTrader):
         self.refresh()
         for i, entrust in enumerate(self.cancel_entrusts):
             if entrust[self._config.CANCEL_ENTRUST_ENTRUST_FIELD] == entrust_no:
-                self._cancel_entrust_by_double_click(i)
+                self._cancel_entrust_by_double_click(i + 1)
                 return self._handle_pop_dialogs()
         return {"message": "委托单状态错误不能撤单, 该委托单可能已经成交或者已撤"}
 
@@ -558,7 +558,7 @@ class ClientTrader(IClientTrader):
         x = self._config.CANCEL_ENTRUST_GRID_LEFT_MARGIN
         y = (
             self._config.CANCEL_ENTRUST_GRID_FIRST_ROW_HEIGHT
-            + self._config.CANCEL_ENTRUST_GRID_ROW_HEIGHT * row + 1
+            + self._config.CANCEL_ENTRUST_GRID_ROW_HEIGHT * row
         )
         self._app.top_window().child_window(
             control_id=self._config.COMMON_GRID_CONTROL_ID,
