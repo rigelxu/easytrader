@@ -1,35 +1,38 @@
 # easytrader
 
-[![Package](https://img.shields.io/pypi/v/easytrader.svg)](https://pypi.python.org/pypi/easytrader) [![License](https://img.shields.io/github/license/shidenggui/easytrader.svg)](https://github.com/shidenggui/easytrader/blob/master/LICENSE)
+[![Package](https://img.shields.io/pypi/v/easytrader.svg)](https://pypi.python.org/pypi/easytrader)
+[![License](https://img.shields.io/github/license/shidenggui/easytrader.svg)](https://github.com/shidenggui/easytrader/blob/master/LICENSE)
 
-- ï¿½ï¿½ï¿½Ð¹ï¿½Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-- Í¨ï¿½Ãµï¿½Í¬ï¿½ï¿½Ë³ï¿½Í»ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½
-- Ö§ï¿½ï¿½È¯ï¿½Ìµï¿½ [miniqmt](https://easytrader.readthedocs.io/zh-cn/master/miniqmt/) ï¿½Ù·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½
-- Ö§ï¿½ï¿½Ñ©ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ÖºÍ¸ï¿½ï¿½ï¿½
-- Ö§ï¿½ï¿½Ô¶ï¿½Ì²ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½
-- Ö§ï¿½Ö¸ï¿½ï¿½ï¿½ `joinquant`, `ricequant` ï¿½ï¿½Ä£ï¿½ â½» ï¿½ï¿½
+* ½øÐÐ¹ÉÆ±Á¿»¯½»Ò×
+* Í¨ÓÃµÄÍ¬»¨Ë³¿Í»§¶ËÄ£Äâ²Ù×÷
+* Ö§³ÖÈ¯ÉÌµÄ [miniqmt](https://easytrader.readthedocs.io/zh-cn/master/miniqmt/) ¹Ù·½Á¿»¯½Ó¿Ú
+* Ö§³ÖÑ©Çò×éºÏµ÷²ÖºÍ¸ú×Ù
+* Ö§³ÖÔ¶³Ì²Ù×÷¿Í»§¶Ë
+* Ö§³Ö¸ú×Ù `joinquant`, `ricequant` µÄÄ£Äâ½»Ò×
 
-### Î¢ï¿½ï¿½Èºï¿½Ô¼ï¿½ï¿½ï¿½ï¿½Úºï¿½
 
-ï¿½ï¿½Ó­ï¿½ï¿½ï¿½É¨ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ÚºÅ¡ï¿½Ê³ï¿½Æ¹ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Èºï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½Òºï¿½ï¿½Ñ£ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+### Î¢ÐÅÈºÒÔ¼°¹«ÖÚºÅ
 
-![ï¿½ï¿½ï¿½ÚºÅ¶ï¿½Î¬ï¿½ï¿½](https://camo.githubusercontent.com/6fad032c27b30b68a9d942ae77f8cc73933b95cea58e684657d31b94a300afd5/68747470733a2f2f67697465652e636f6d2f73686964656e676775692f6173736574732f7261772f6d61737465722f755069632f6d702d71722e706e67)
+»¶Ó­´ó¼ÒÉ¨Âë¹Ø×¢¹«ÖÚºÅ¡¸Ê³µÆ¹í¡¹£¬Ò»Æð½»Á÷¡£½øÈº¿ÉÍ¨¹ý²Ëµ¥¼ÓÎÒºÃÓÑ£¬±¸×¢Á¿»¯¡£
 
-ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½ Github ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½ï¿½ò¿ª£ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ÚºÅ¶ï¿½Î¬ï¿½ï¿½](https://camo.githubusercontent.com/6fad032c27b30b68a9d942ae77f8cc73933b95cea58e684657d31b94a300afd5/68747470733a2f2f67697465652e636f6d2f73686964656e676775692f6173736574732f7261772f6d61737465722f755069632f6d702d71722e706e67)Ö±ï¿½Ó´ï¿½Í¼Æ¬ï¿½ï¿½
+![¹«ÖÚºÅ¶þÎ¬Âë](https://camo.githubusercontent.com/6fad032c27b30b68a9d942ae77f8cc73933b95cea58e684657d31b94a300afd5/68747470733a2f2f67697465652e636f6d2f73686964656e676775692f6173736574732f7261772f6d61737465722f755069632f6d702d71722e706e67)
+
+Èô¶þÎ¬ÂëÒò Github ÍøÂçÎÞ·¨´ò¿ª£¬Çëµã»÷[¹«ÖÚºÅ¶þÎ¬Âë](https://camo.githubusercontent.com/6fad032c27b30b68a9d942ae77f8cc73933b95cea58e684657d31b94a300afd5/68747470733a2f2f67697465652e636f6d2f73686964656e676775692f6173736574732f7261772f6d61737465722f755069632f6d702d71722e706e67)Ö±½Ó´ò¿ªÍ¼Æ¬¡£
 
 ### Author
 
-> Blog [@shidenggui](https://shidenggui.com) ï¿½ï¿½ Weibo [@Ê³ï¿½Æ¹ï¿½](https://www.weibo.com/u/1651274491) ï¿½ï¿½ Twitter [@shidenggui](https://twitter.com/shidenggui)
+> Blog [@shidenggui](https://shidenggui.com) ¡¤ Weibo [@Ê³µÆ¹í](https://www.weibo.com/u/1651274491) ¡¤ Twitter [@shidenggui](https://twitter.com/shidenggui)
 
-### ï¿½ï¿½ï¿½
+### Ïà¹Ø
 
-- [easyquotation ÊµÊ±ï¿½ï¿½È¡È«ï¿½Ð³ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½](https://github.com/shidenggui/easyquotation)
-- [easyquant ï¿½òµ¥µï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½](https://github.com/shidenggui/easyqutant)
+* [easyquotation ÊµÊ±»ñÈ¡È«ÊÐ³¡¹ÉÆ±ÐÐÇé](https://github.com/shidenggui/easyquotation)
+* [easyquant ¼òµ¥µÄÁ¿»¯¿ò¼Ü](https://github.com/shidenggui/easyqutant)
 
-### Ä£ï¿½ â½» ï¿½ï¿½
 
-- Ñ©ï¿½ï¿½ï¿½ï¿½ï¿½ by @[haogefeifei](https://github.com/haogefeifei)ï¿½ï¿½[Ëµï¿½ï¿½](doc/xueqiu.md)ï¿½ï¿½
+### Ä£Äâ½»Ò×
 
-### Ê¹ï¿½ï¿½ï¿½Äµï¿½
+* Ñ©Çò×éºÏ by @[haogefeifei](https://github.com/haogefeifei)£¨[ËµÃ÷](doc/xueqiu.md)£©
 
-[ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½](https://easytrader.readthedocs.io/)
+### Ê¹ÓÃÎÄµµ
+
+[ÖÐÎÄÎÄµµ](https://easytrader.readthedocs.io/)
