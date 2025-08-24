@@ -94,19 +94,19 @@ class Copy(BaseStrategy):
         except:
             Copy._need_captcha_reg = True
 
-    def _get_clipboard_data(self) -> str:
-        # 增加验证码识别，防止复制时弹出验证码窗口阻塞
-        while True:
-            is_captcha_window_exist = self._trader.app.top_window().window(
-                class_name="Static", title_re="验证码").exists(timeout=1)
+    def _is_captcha_window_exist(self) -> bool:
+        return self._trader.app.top_window().window(class_name="Static", title_re="验证码").exists()
 
-            if not is_captcha_window_exist:
+    def _get_clipboard_data(self) -> str:
+        while True:
+            if not self._is_captcha_window_exist():
                 break
 
             logger.info("识别到出现了验证码弹窗-->")
 
             file_path = "tmp.png"
             count = 5
+            is_verification_passed = False
             while count > 0:
                 self._trader.app.top_window().window(
                     control_id=0x965, class_name="Static"
@@ -122,9 +122,7 @@ class Copy(BaseStrategy):
                         control_id=0x964, class_name="Edit"
                     )
                     input_box.set_focus()
-                    input_box.type_keys(
-                        # 全选清除后输入
-                        "^a{BACKSPACE}" + captcha_num, set_foreground=False)
+                    input_box.type_keys("^a{BACKSPACE}" + captcha_num, set_foreground=False)  # 全选清除后输入
                     input_box.set_text(
                         captcha_num
                     )  # 模拟输入验证码
@@ -133,12 +131,18 @@ class Copy(BaseStrategy):
                     pywinauto.keyboard.send_keys("{ENTER}")  # 模拟发送enter，点击确定
                     self._trader.wait(0.1)
 
-                    break
+                    if not self._is_captcha_window_exist():
+                        is_verification_passed = True
+                        break
+                    
                 count -= 1
                 self._trader.wait(0.1)
                 self._trader.app.top_window().window(
                     control_id=0x965, class_name="Static"
                 ).click()
+
+            if is_verification_passed:
+                break
 
         count = 5
         while count > 0:
