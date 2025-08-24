@@ -97,62 +97,48 @@ class Copy(BaseStrategy):
     def _get_clipboard_data(self) -> str:
         # 增加验证码识别，防止复制时弹出验证码窗口阻塞
         while True:
-            # if Copy._need_captcha_reg:
-            if (
-                    self._trader.app.top_window().window(
-                        class_name="Static", title_re="验证码").exists(timeout=1)
-            ):
-                logger.info("识别到出现了验证码弹窗-->")
+            is_captcha_window_exist = self._trader.app.top_window().window(
+                class_name="Static", title_re="验证码").exists(timeout=1)
 
-                file_path = "tmp.png"
-                count = 5
-                found = False
-                while count > 0:
-                    self._trader.app.top_window().window(
-                        control_id=0x965, class_name="Static"
-                    ).capture_as_image().save(
-                        file_path
-                    )  # 保存验证码
-
-                    captcha_num = captcha_recognize(file_path).strip()  # 识别验证码
-                    captcha_num = "".join(captcha_num.split())
-                    logger.info("captcha result-->" + captcha_num)
-                    if len(captcha_num) == 4:
-                        input_box = self._trader.app.top_window().window(
-                            control_id=0x964, class_name="Edit"
-                        )
-                        input_box.set_focus()
-                        input_box.type_keys(
-                            # 全选清除后输入
-                            "^a{BACKSPACE}" + captcha_num, set_foreground=False)
-                        input_box.set_text(
-                            captcha_num
-                        )  # 模拟输入验证码
-                        self._trader.wait(0.3)  # 增加短时等待确保输入生效
-                        # self._trader.app.top_window().set_focus()
-                        pywinauto.keyboard.send_keys(
-                            "{ENTER}")  # 模拟发送enter，点击确定
-                        self._trader.wait(0.3)
-                        try:
-                            logger.info(
-                                self._trader.app.top_window()
-                                    .window(control_id=0x966, class_name="Static")
-                                    .window_text()
-                            )
-                        except Exception as ex:  # 窗体消失
-                            logger.exception(ex)
-                            found = True
-                            break
-                    count -= 1
-                    self._trader.wait(0.1)
-                    self._trader.app.top_window().window(
-                        control_id=0x965, class_name="Static"
-                    ).click()
-                if not found:
-                    self._trader.app.top_window().Button2.click()  # 点击取消
-            else:
-                # Copy._need_captcha_reg = False
+            if not is_captcha_window_exist:
                 break
+
+            logger.info("识别到出现了验证码弹窗-->")
+
+            file_path = "tmp.png"
+            count = 5
+            while count > 0:
+                self._trader.app.top_window().window(
+                    control_id=0x965, class_name="Static"
+                ).capture_as_image().save(
+                    file_path
+                )  # 保存验证码
+
+                captcha_num = captcha_recognize(file_path).strip()  # 识别验证码
+                captcha_num = "".join(captcha_num.split())
+                logger.info("captcha result-->" + captcha_num)
+                if len(captcha_num) == 4:
+                    input_box = self._trader.app.top_window().window(
+                        control_id=0x964, class_name="Edit"
+                    )
+                    input_box.set_focus()
+                    input_box.type_keys(
+                        # 全选清除后输入
+                        "^a{BACKSPACE}" + captcha_num, set_foreground=False)
+                    input_box.set_text(
+                        captcha_num
+                    )  # 模拟输入验证码
+                    self._trader.wait(0.1)  # 增加短时等待确保输入生效
+                    # self._trader.app.top_window().set_focus()
+                    pywinauto.keyboard.send_keys("{ENTER}")  # 模拟发送enter，点击确定
+                    self._trader.wait(0.1)
+
+                    break
+                count -= 1
+                self._trader.wait(0.1)
+                self._trader.app.top_window().window(
+                    control_id=0x965, class_name="Static"
+                ).click()
 
         count = 5
         while count > 0:
